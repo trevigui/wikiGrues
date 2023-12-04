@@ -1,0 +1,218 @@
+/*On commence par sélectionner tout avec le wildcard, puis on applique
+une marge et padding uniformes pour ignorer les différences entre chaque
+navigateur*/
+
+/*Ne pas oublier les espaces après les doubles points ni les points-virgules */
+/*Ne pas utiliser de virgules pour les décimales*/
+/*Les sélecteurs personnalisés sont sensible à la casse.*/
+
+/*Il faut mettre le @font-face au début du code car il invoque la police au début du chargement du css (après que le css a été invoqué par le css).*/
+@font-face {
+	font-family: 'Roboto';
+	src: url(‘/fonts/Roboto-Regular.woff2’) format(‘woff2’),
+		url(‘/fonts/Robot-Regular.ttf’) format(‘truetype’)
+}
+
+*{
+    /* Marge = marge extérieure à notre boîte*/
+    margin: 0;
+    /* Padding = marge intérieure à notre boîte, utilisée pour agrandir facilement des éléments en responsive*/
+    padding: 0;
+    box-sizing: border-box;
+    /* autre méthode facile pour les polices courantes => font-family: Calibri; */
+    font-family: 'Roboto', sans-serif;
+}
+/******************************************************* Exemple *********************************************************************/
+
+/* la suivante ligne h1 est un sélecteur,
+ce qui est contenu à l'intérieur (e.g. color) est une valeur*/
+h1{
+    color:#006900;
+}
+
+/******************************************************* Header *********************************************************************/
+
+body {
+    margin: auto;
+    /*width:1000px ;*/
+    /* Mettre des pourcentages et tester le zoom. Tester en mode mobile sur l'inspecteur */
+}
+
+.hautDePage{
+    /* hautDePage agit sur le logo ET les éléments de menus mais pas les éléments de menu
+    individuellement, donc je ne peux pas encore horizontaliser tout individuellement*/
+    display: flex;
+    /* Je répartis la photo et les éléments de menu sur la page au centre*/
+    background-color: darkolivegreen;
+    align-items: center;
+    font-size: 1em; /*(Ici, cela influence la taille de mon logo)*/
+}
+
+.logo{
+    /* Quand width est utilisé le paramètre height n'est souvent pas nécessaire car width change aussi la hauteur. */
+   width: 4em;
+   border-radius: 50%;
+   /* valeurx de la box-shadow sont X-axis, Y-axis, blur, et spread.*/
+   box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5) ;
+   /*L'unité px em ou rem doit être collée au nombre choisi pour fonctionner*/
+   margin-left: 1em;
+   margin-top: 0.5rem;
+   margin-bottom: 0.5rem;
+   display:flex;
+   justify-content:center;
+}
+
+/*Pour agir sur un enfant de header, je préfère agir sur le nav que le div.
+Agir sur le div ne fonctionnerait pas par défaut. nav=plus facile*/
+/*On ne met pas de point car il n'y a pas d'appel de classe*/
+nav ul li {
+/* display: inline */
+display: inline;
+    margin-left: 20px; /* On utilisera gap si on veut que l'espace soit entre chaque élément,
+                        Ici, je préfère utilsier margin-left pour éloigner mon navbar du logo */
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.3) ;
+}
+
+/*Quand utilise comme sélecteur CSS une balise HTML préexistante comme main (qui n'est pas une classe qu'on a créée nous-même,
+On ne mets pas de point devant pour l'appeler*/
+nav ul li a {
+    /* On enlève le soulignement des liens "a" (et les bullet points ?)*/
+    /* On ne peut pas appliquer cette option au <li> juste avant
+    qui n'est pas considéré comme un parent car il est sur la même ligne*/
+    text-decoration: none;
+    color: khaki;
+}
+
+/* On peut utiliser :hover ou :visited ici ((:visited ne fonctionnera que si toutes nos pages ont des headers))*/
+/* On pourra utiliser :focus (barre de texte clignotante) ou :active avec le paramètres color-background */
+nav ul li a:hover {
+    color:#556b2f;
+}
+
+.topButton {
+    width: 5em;
+    height: 3em;
+    border-style: none;
+    /* On mettra un border-radius de 50% (tout pour un cercle*/
+    border-radius: 10% 10% 10% 10% / 20% 20% 20% 20% ;
+    border-color:#556b2f;
+    background:#9ca86a;
+    transition-duration: 0.4s;
+}
+
+/*Pour indiquer le changement sur hover, il faut ajouter hover SANS ajouter d'espace après le double-point.*/
+.topButton:hover {
+    background-color: #04AA6D;
+}
+/******************************************************* body *********************************************************************/
+
+body{
+    /* On peut rajouter la valeur cover center au paramètre background*/
+    /* On peut utiliser soit la paramètre background: ou background-repeat: ou background-machin */  
+    margin-top: 1em; 
+    background-image: url("background.jpg");
+    background-repeat: repeat;
+    background-size : 1em;
+    /* On peut aussi faire un background-position, background: url(), background: linear-gradient(90deg, #8360c3, #2ebf92); opacity:0,3; */
+}
+
+.content {
+    margin-top: 1em;
+    /* Je ne mets pas de margin: bottom pour éviter une double espacement entre les sections */
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: 1 px;
+    border-color:#556b2f;
+    border-style: solid;
+}
+
+.images {
+    width: 200px;
+    border-width: 1em;
+    border-color: darkolivegreen;
+    border-style: none;
+    border-radius: 69% 31% 43% 57% / 48% 26% 74% 52% ;
+}
+
+.section1 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.section2 {
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.section2 a {
+    text-decoration: none ;
+    color: black ;
+}
+
+.margin2 {
+    margin-left: 1em;
+}
+.fond2 {
+    width: auto;
+    height: auto;
+    background: linear-gradient(180deg, #9ca86a, #556b2f);
+    /* Attention  à ne pas utiliser de virgules pour les décimales ! ça casse tout !*/
+    opacity: 1;
+}
+
+.texte a {
+    text-decoration: none;
+    color: black;
+}
+
+.spiel {
+margin-bottom: 2em;
+text-align:justify;
+margin-right: 1em;
+}
+
+.flashcard {
+    border: 1 px;
+    border-color:#556b2f;
+    border-style: solid;
+    margin-bottom: 1em;
+}
+
+.boxContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Trois valeurs = trois colonnes */ /* 1fr = 150 px */
+    grid-template-rows: 100fr 250fr 200fr; /* L'unité fr (fractionnement) est responsive et spécifique au display:grid */
+    gap: 10px; /*Idem que margin, permet d'éviter de devoir choisir une direction (left ou right) */
+}
+
+.box {
+    border: 1px solid #556b2f ;
+    height: 100px; /* Cette boîte force une hauteur à la boîte, ce qui peut rentrer en conflit
+                    avec les valeurs indiqués dans .contaier {grid-template-column} */
+
+}
+
+/******************************************************* footer *********************************************************************/
+
+.pageBottom {
+    background-color: darkolivegreen;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBottom ul li {
+    display: inline ;
+    color: khaki;
+    margin-left: 20px;
+}
