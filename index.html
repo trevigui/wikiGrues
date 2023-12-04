@@ -19,7 +19,7 @@
 <!-- A Class name can be used by multiple HTML elements, while an ID name must only be used by one HTML element within the page.--!>
 
 <!-- Le body contient la partie émergée du code -->
-<body>
+<body id="pageTop">
     <header>
         <!-- On fait un div contenant notre div img et notre div nav, il faut autant de boîtes div que possible.-->
         <!-- J'indique dans le tag div la classe nommée hautDePage" que j'ai créé
@@ -45,70 +45,90 @@
     </header>
     <main>
         <section class="content">
-                    <!-- Le <aside> est enfant du <main>.-->
-                    <header>
-                        <h1> Les grues</h1>
-                        <h2> Les habitudes migratoires des grues et autres volatiles </h2>
-                    </header>
-                    <!-- Il n'est possible d'influencer le contenu (width) des images contenues dans la section en appelant la classe de la section.
-                    On peut influencer les éléments de la section entre eux mais pas individuellement.
-                    Je crée donc une classe pour l'agencement des images dans la section, et une classe pour la taille des deux img-->
-                    <figure class="section1">
-                        <a href="#species"><img class="images" src="content1.jpg" alt="un oiseau"></a>
-                        <a href="#species"><img class="images" src="content2.jpg" alt="un oiseau"></a>
-                    </figure>
-                    <div class="section2">
-                        <!-- On peut choisir des boîtes <section> ou <div> sans distinction à part une meilleure SEO pour les sections dans le main.-->
-                        <a href="#species"><h3>La grue commune</h3></a>
-                        <a href="#species"><h3>La grue à crête</h3></a>
-                    </div>
-                    <div class="spiel">
-                        <p>
-                            Les Gruidés (Gruidae) sont une famille de grands oiseaux de l'ordre des Gruiformes.
-                            Cette famille comprend quatre genres et quinze espèces existantes. Ce sont de grands oiseaux terrestres (de 90 à 176 centimètres), gracieux, à long cou et longues pattes, au plumage à dominantes grises ou blanches.
-                        </p>
-                    </div>
-                    <h2 class="corpus"> Flux migratoires </h2>
-                    <div class="flashcard">
-                        <h3> En France... </h3>
-                            <h4>La grue cendrée</h4>
-                            <p>La grue cendrée (Grus grus) est une espèce de grands oiseaux de la famille des gruidés. La population mondiale de grues cendrées adultes est estimée en 2021 à 482 000 individus et en augmentation, ce qui fait classer l'espèce en « préoccupation mineure »1. </p>
-                            <br>
-                            <h3> Cycle migratoire </h3>
-                            <p>Les grues arrivent en masse en France, en fin de journée et durant la nuit sur un très large front. La Moselle, le Bas-Rhin sont très survolés (dans ce dernier département, un observateur en totalise plus de 12 000 avant la nuit !) mais aussi la Haute-Marne, la Meuse... Certaines poursuivent leur route sans s'arrêter dans le Grand Est.</p>
-                    </div>
-                        
-                    </div>
-                    <div class="flashcard">
-                        <h3 id="species"> Espèces </h3>
-                            <h4>La venue du froid</h4>
-                            <p>Au lac du Der, les effectifs augmentent avec 36 250 grues. En raison de la température basse, certaines grues avaient les pattes rentrées dans les plumes en volant. Bien que la diagonale de migration apparaisse bien sur la carte, le nombre de grues concernées par des mouvements aujourd'hui n'est pas très important. </p>
-                    </div>
+            <!-- Le <aside> est enfant du <main>.-->
+            <header>
+                <h1> Les grues</h1>
+                <h2> Les habitudes migratoires des grues et autres volatiles </h2>
+            </header>
+            <!-- Il n'est possible d'influencer le contenu (width) des images contenues dans la section en appelant la classe de la section.
+            On peut influencer les éléments de la section entre eux mais pas individuellement.
+            Je crée donc une classe pour l'agencement des images dans la section, et une classe pour la taille des deux img-->
+            <figure class="section1">
+                <a href="#species"><img class="images" src="content1.jpg" alt="un oiseau"></a>
+                <a href="#species"><img class="images" src="content2.jpg" alt="un oiseau"></a>
+            </figure>
+            <div class="section2">
+                <!-- On peut choisir des boîtes <section> ou <div> sans distinction à part une meilleure SEO pour les sections dans le main.-->
+                <a href="#species"><h3>La grue commune</h3></a>
+                <a href="#species"><h3>La grue à crête</h3></a>
             </div>
+            <div class="spiel">
+                <p>
+                    Les Gruidés (Gruidae) sont une famille de grands oiseaux de l'ordre des Gruiformes.
+                    Cette famille comprend quatre genres et quinze espèces existantes. Ce sont de grands oiseaux terrestres (de 90 à 176 centimètres), gracieux, à long cou et longues pattes, au plumage à dominantes grises ou blanches.
+                </p>
+            </div>
+            <h2 class="corpus"> Flux migratoires </h2>
+            <div class="flashcard">
+                <h3> En France... </h3>
+                    <h4>La grue cendrée</h4>
+                    <p>La grue cendrée (Grus grus) est une espèce de grands oiseaux de la famille des gruidés. La population mondiale de grues cendrées adultes est estimée en 2021 à 482 000 individus et en augmentation, ce qui fait classer l'espèce en « préoccupation mineure »1. </p>
+                    <br>
+                    <h3> Cycle migratoire </h3>
+                    <p>Les grues arrivent en masse en France, en fin de journée et durant la nuit sur un très large front. La Moselle, le Bas-Rhin sont très survolés (dans ce dernier département, un observateur en totalise plus de 12 000 avant la nuit !) mais aussi la Haute-Marne, la Meuse... Certaines poursuivent leur route sans s'arrêter dans le Grand Est.</p>
+            </div>
+            <div class="flashcard">
+                <h3 id="species"> Espèces </h3>
+                    <h4>La venue du froid</h4>
+                    <p>Au lac du Der, les effectifs augmentent avec 36 250 grues. En raison de la température basse, certaines grues avaient les pattes rentrées dans les plumes en volant. Bien que la diagonale de migration apparaisse bien sur la carte, le nombre de grues concernées par des mouvements aujourd'hui n'est pas très important. </p>
+            </div>
+    
         </section>
-        <section>
-            <div class="content">
-                <article>
-                    <div class="boxContainer">
-                    <!-- Pour faire plusieurs div d'un coup, on tape div * 8 puis on maintiendra alt et on cliquera au mileu de <div></div>
-                    Dans chaque ligne pour insérer le même texte sur toutes les lignes. -->
-                        <div class="box"> Boîte 1</div>
-                        <div class="box"> Boîte 2</div>
-                        <div class="box"> Boîte 3</div>
-                        <div class="box"> Boîte 4</div>
-                        <div class="box"> Boîte 5</div>
-                        <div class="box"> Boîte 6</div>
-                        <div class="box"> Boîte 7</div>
-                        <div class="box"> Boîte 8</div>
-                    </div>
-                </article>
-            </div>
+        <section class="content">
+            <table> <!-- On fait les tableaux ligne par ligne, à commencer par les headers.-->
+                <caption>TABLO</caption> <!-- balise utilisée pour les titres de tableau -->
+                <tr>
+                    <th>Villes</th>
+                    <th>NOM</th>
+                    <th>Année</th>
+                </tr>
+                <tr>
+                    <th>Bruges</th>
+                    <td>Guillaume</td>
+                    <td>2023</td>
+                </tr>
+                <tr>
+                    <th>Eysines</th>
+                    <td>Doe</td>
+                    <td>2023</td>
+                </tr>
+                <tr>
+                    <th>Le Tasta</th>
+                    <td>John</td>
+                    <td>2021</td>
+                </tr>
+
+            </table>
+        </section>
+        <section class="content">
+            <article class="boxContainer">
+                <!-- Pour faire plusieurs div d'un coup, on tape div * 8 puis on maintiendra alt et on cliquera au mileu de <div></div>
+                Dans chaque ligne pour insérer le même texte sur toutes les lignes. -->
+                <div class="box1 boxAll"> La grue cendrée mesure de 110 à 130 cm, pour une envergure de 190 à 230 cm et un poids de 4 à 7 kg. Comme son nom l'indique, elle est principalement grise avec une bande blanche verticale le long du cou, tandis qu'une touffe de plumes noires garnit sa queue. Elle porte sur le crâne une portion de peau nue rouge, peu visible dans la nature. </div>
+                <div class="box2_2">  <!-- J'enlève la classe BoxAll car je vais overwrite la valeur height pour avoir une boîte carrée-->
+                    <h2>Grues. La mie vendéenne honorée pour sa baguette</h2>
+                </div>
+                <div class="box3_2 boxAll"> Lorem Ipsum Dolor Sit Amet.</div>
+                <div class="box4_2 boxAll"> O Tempora O mores ! Senatus haec intellegit hic tamen vivit. Vivit ? Immo vero etiam cum senatum venit.</div>
+                <div class="box5_2 boxAll"> Grues est une commune à prédominance agricole et à vocation touristique de par la proximité du littoral</div>
+                <div class="box6_2 boxAll"> Wh</div>
+                <div class="box7_2 boxAll"> Filler text Filler text Filler text Filler text Filler text </div>
+                <div class="box8_2 boxAll"> W</div>
+            </article>
         </section>
         <div class="fond2">
             <div class="margin2">
-                <h4> petit titre</h4>
-                <h5> mini titre </h5>
-                <h6> nano titre</h6>
+                <a href="#pageTop"><button id="bottomButton"><img class="upArrow" src="/upArrow.svg"></button></button></a>
             </div>
         </div>
     </main>

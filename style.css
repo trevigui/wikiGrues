@@ -33,9 +33,11 @@ h1{
 /******************************************************* Header *********************************************************************/
 
 body {
-    margin: auto;
-    /*width:1000px ;*/
-    /* Mettre des pourcentages et tester le zoom. Tester en mode mobile sur l'inspecteur */
+    /*margin: auto;
+    width:1000px ;
+    /* Mettre des pourcentages dans la limite width arbitraire et tester le zoom. Tester en mode mobile sur l'inspecteur */
+
+
 }
 
 .hautDePage{
@@ -52,7 +54,7 @@ body {
     /* Quand width est utilisé le paramètre height n'est souvent pas nécessaire car width change aussi la hauteur. */
    width: 4em;
    border-radius: 50%;
-   /* valeurx de la box-shadow sont X-axis, Y-axis, blur, et spread.*/
+   /* les valeurs de la box-shadow sont X-axis, Y-axis, blur, et spread.*/
    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5) ;
    /*L'unité px em ou rem doit être collée au nombre choisi pour fonctionner*/
    margin-left: 1em;
@@ -102,7 +104,7 @@ nav ul li a:hover {
 
 /*Pour indiquer le changement sur hover, il faut ajouter hover SANS ajouter d'espace après le double-point.*/
 .topButton:hover {
-    background-color: #04AA6D;
+   background-color: white;
 }
 /******************************************************* body *********************************************************************/
 
@@ -121,17 +123,14 @@ body{
     /* Je ne mets pas de margin: bottom pour éviter une double espacement entre les sections */
     margin-left: 1em;
     margin-right: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+padding: 1em;
     border: 1 px;
     border-color:#556b2f;
     border-style: solid;
 }
 
 .images {
-    width: 200px;
+    width: 8em;
     border-width: 1em;
     border-color: darkolivegreen;
     border-style: none;
@@ -160,6 +159,9 @@ body{
 
 .margin2 {
     margin-left: 1em;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center
 }
 .fond2 {
     width: auto;
@@ -189,18 +191,139 @@ margin-right: 1em;
 
 .boxContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Trois valeurs = trois colonnes */ /* 1fr = 150 px */
-    grid-template-rows: 100fr 250fr 200fr; /* L'unité fr (fractionnement) est responsive et spécifique au display:grid */
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Trois valeurs = trois colonnes */ /* 1fr = 150 px */
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; /* L'unité fr (fractionnement) est responsive et spécifique au display:grid */
     gap: 10px; /*Idem que margin, permet d'éviter de devoir choisir une direction (left ou right) */
 }
 
-.box {
+th {
+    border: 4px solid darkolivegreen;
+    padding: 4px ; /* Pour centrer de manière globale approximativement */
+    text-align: center; /* Pour centrer horizontalement */
+}
+
+td {
+    border: 2px solid darkolivegreen ;
+    padding: 4px ;
+    text-align: center;
+}
+
+table {
+    margin:  0 auto ; /* s'applique sur l'objet-même. Permet de centrer un objet au centre de son conteneur parent. (Top et Bottom 0) (left et right rauto)*/
+    border-collapse: collapse ; /* Permet d'enlever l'écart entre les cellules et avoir un tableau
+                                Qui ressemble à un tableau*/
+}
+
+caption {
+    font-size: 60px;
+}
+
+
+.boxAll {
     /* Pour notre grille on peut utiliser grid-column-start:1, grid-column-end:4, grid-row-start, grid-row-end */
-    /* On peut aussi utiliser les déclarations grid-row: 1 / 3 et grid-column: 1 / 3 */
+    /* On peut aussi utiliser les déclarations grid-row: 1 / 4 (start et end) et grid-column: 1 / 3 */
     border: 1px solid #556b2f ;
     height: 100px; /* Cette boîte force une hauteur à la boîte, ce qui peut rentrer en conflit
                     avec les valeurs indiqués dans .contaier {grid-template-column} */
+padding: 1em;
+}
 
+
+.box1 {
+    grid-column: 1 / 5 ; /*Dans mon boxContainer, j'ai défini 5 colonnes, ma première colonne ira de l'arête de colonne 1 à la 5.*/
+    grid-row: 1 / 2 ;
+    }
+
+.box2 {
+    grid-column: 1 / 3 ;
+    grid-row: 2 / 3 ;
+}
+
+.box3 {
+    grid-column: 3 / 5 ;
+    grid-row: 2 / 4 ;
+    /* Ne pouvant pas lier la classe boxAll à ma boîte 3, je dois le respécifier dans sa classe propre*/
+    height: 2fr;
+    border: 1px solid #556b2f ;
+}
+
+.box4 {
+    grid-column: 1 / 2 ;
+    grid-row: 3 / 4 ;
+}
+
+.box5 {
+    grid-column: 2 / 3 ;
+    grid-row: 3 / 4 ;
+}
+
+.box6 {
+    grid-column: 1 / 3 ;
+    grid-row: 4 / 5 ;
+}
+
+.box7 {
+    grid-column: 3 / 5 ;
+    grid-row: 4 / 5 ;
+}
+
+.box8 {
+    grid-column: 1 / 5 ;
+    grid-row: 5 / 6 ;
+}
+
+/* ------------------------------------Boîtes de la deuxième section-----------------------------*/
+
+.box2_2 {
+    grid-column: 1 / 3 ;
+    grid-row: 2 / 4 ;
+        /* Ne pouvant pas lier la classe boxAll à ma boîte 2 de la section 2, je dois le respécifier dans sa classe propre*/
+    height: 2fr;
+    border: 1px solid #556b2f ;
+}
+
+.box3_2 {
+    grid-column:3 / 4 ;
+    grid-row: 2 / 3 ;
+}
+
+.box4_2 {
+    grid-column: 4 / 5 ;
+    grid-row: 2 / 3 ;
+}
+
+.box5_2 {
+    grid-column: 3 / 5 ;
+    grid-row: 3 / 4 ;
+}
+
+.box6_2 {
+    grid-column: 1 / 5 ;
+    grid-row: 4 / 5 ;
+}
+
+.box7_2 {
+    grid-column: 1 / 2 ;
+    grid-row: 5 / 6 ;
+}
+
+.box8_2 {
+    grid-column: 2 / 5 ;
+    grid-row: 5 / 6 ;
+}
+
+#bottomButton {
+    width: 5em;
+    height: 5em;
+    border-style: solid;
+    /* On mettra un border-radius de 50% (tout pour un cercle*/
+    border-radius: 50% ;
+    border-color:#556b2f;
+    background:#9ca86a;
+    transition-duration: 0.4s;
+}
+.upArrow {
+    width: 20px;
 }
 
 /******************************************************* footer *********************************************************************/
