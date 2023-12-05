@@ -36,8 +36,6 @@ body {
     /*margin: auto;
     width:1000px ;
     /* Mettre des pourcentages dans la limite width arbitraire et tester le zoom. Tester en mode mobile sur l'inspecteur */
-
-
 }
 
 .hautDePage{
@@ -188,6 +186,12 @@ margin-right: 1em;
     border-style: solid;
     margin-bottom: 1em;
 }
+
+textarea {
+    resize:none; 
+}
+
+/* ------------------------------------------------- TABLEAUX BOITES ------------------------------------------------------------------------------------ */
 
 .boxContainer {
     display: grid;
