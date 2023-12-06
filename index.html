@@ -17,31 +17,40 @@
 </head>
 
 <!-- Le text-align peut être utile pour aligner le texte aux autres éléments d'une boîte.-->
-<!-- A Class name can be used by multiple HTML elements, while an ID name must only be used by one HTML element within the page.--!>
-
+<!-- A Class name can be used by multiple HTML elements, while an ID name must only be used by one HTML element within the page.-->
 <!-- Le body contient la partie émergée du code -->
-<body id="pageTop">
+<body>
     <header>
         <!-- On fait un div contenant notre div img et notre div nav, il faut autant de boîtes div que possible.-->
         <!-- J'indique dans le tag div la classe nommée hautDePage" que j'ai créé
         dans mon css-->
-        <div class="hautDePage">
-            <div>
-                <!-- L'unité "em" est adaptative sur toutes les plateformes (mobile, desktop) comparée à la valeur "px"-->
-                <!-- On ne met pas de style="width:20em" à notre image, on le fera sur du CSS, pas sur du HTML-->
-                <img class="logo" src="monimage.png" alt="Logo du site">
-            </div>
-            <div>
-                <nav>
-                    <ul>
-                        <!-- href="#" tout seul signifie que l'on est redirigé vers la même page-->
-                        <li><button type="button" class="topButton"><a href="#" target="_blank">Accueil</a></button></li>
-                        <li><button type="button" class="topButton"><a href="navigation/service.html" target="_blank">Service</a></button></li>
-                        <li><button type="button" class="topButton"><a href="navigation/produit.html" target="_blank">Produit</a></button></li>
-                        <li><button type="button" class="topButton"><a href="navigation/contact.html" target="_blank">Contact</a></button></li>
-                    </ul>
+        <div>
+            <nav class="desktopMenu">
+                <ul class="desktopList">
+                    <!-- L'unité "em" est adaptatiave sur toutes les plateformes (mobile, desktop) comparée à la valeur "px"-->
+                    <!-- On ne met pas de style="width:20em" à notre image, on le fera sur du CSS, pas sur du HTML-->
+                    <li><a href="#" target="_blank"><img class="logo" src="monimage.png" alt="Logo du site"></a></li>
+                    <!-- href="#" tout seul signifie que l'on est redirigé vers la même page-->
+                    <li><button type="button" class="topButton"><a href="#" target="_blank">Accueil</a></button></li>
+                    <li><button type="button" class="topButton"><a href="navigation/service.html" target="_blank">Service</a></button></li>
+                    <li><button type="button" class="topButton"><a href="navigation/produit.html" target="_blank">Produit</a></button></li>
+                    <li><button type="button" class="topButton"><a href="navigation/contact.html" target="_blank">Contact</a></button></li>
+                </ul>
+            </nav>
+            <div class="mobileMenu">
+                <!-- Utilisation d'une checkbox -->
+                <input type="checkbox" id="hamburger">
+                <!-- Label de la checkbox -->
+                <label id="hamburger-logo" for="hamburger"><img class="mobileLogo" src="/menu.png"></label>
+                <!-- Le reste du menu -->
+                <nav class="mobileList">
+                    <a href="#">Page d'accueil</a>
+                    <a href="/navigation/produit.html">Produit</a>
+                    <a href="/navigation/service.html">Service</a>
+                    <a href="/navigation/contact.html">Contact</a>
                 </nav>
             </div>
+            </a> 
         </div>
     </header>
     <main>
@@ -49,7 +58,7 @@
             <!-- Le <aside> est enfant du <main>.-->
             <header>
                 <h1> Les grues</h1>
-                <h2> Les habitudes migratoires des grues et autres volatiles </h2>
+                <h2> Les habitudes migratoires des grues </h2>
             </header>
             <!-- Il n'est possible d'influencer le contenu (width) des images contenues dans la section en appelant la classe de la section.
             On peut influencer les éléments de la section entre eux mais pas individuellement.
@@ -77,72 +86,7 @@
                     <br>
                     <h3> Cycle migratoire </h3>
                     <p>Les grues arrivent en masse en France, en fin de journée et durant la nuit sur un très large front. La Moselle, le Bas-Rhin sont très survolés (dans ce dernier département, un observateur en totalise plus de 12 000 avant la nuit !) mais aussi la Haute-Marne, la Meuse... Certaines poursuivent leur route sans s'arrêter dans le Grand Est.</p>
-                   <!-- La méthode GET ajoute les informations dans l'URL du site, il ne faut donc pas l'utiliser
-                    pour les informations de connexion utilisateur. Toujours utiliser POST. -->
-                    <!-- Le cycle de vie d'une appli web (e.g. quand on accède à un lien depuis Google. Le concept de
-                         MVC (Vue/Controller/Model, ie. User input=>Actions et Opérations=>Data structure) -->
-                         <br>
-                        <!-- On fuit la méthode GET comme la peste pour les informations confidentielles. Ce n'est pas sécurisé. -->
-                    <form method:"POST" action:"/URLDESITE">
-                        <!-- La méthode suivante permet de méler la ligne du label et de l'input sans ajouter de for="prenom" au label. -->
-                        <!-- Le double point ici n'est pas un opérateur, il s'affichera réellement dans le paragraphe. Ne pas le mettre dans le label permet de plus joliment séparer nos deux sections-->
-                        <!-- name="variable" est une variable qui récupère les informations prenom, dans notre cas, id comporte prénom. -->
-                        <fieldset class="">
-                            <legend>BLABLABLA:</legend>
-                            <!-- On ne sépare les inputs dans des div si on veut pouvoir arranger le formulaire en inline-block plus tard  -->
-                            <p>
-                                <!-- L'attribut maxlength se rapporte au nombre de charactères inputables, pas la taille de la boîte -->
-                                <label>Votre prénom</label> : <input size="15" maxlength="15" type="text" name="prenom" id="prenom" placeholder="Type your name here.">
-                                <label>Votre URL</label> : <input size="15" type="url" name="url" id="url" placeholder="Type your link here.">
-                                <label>Votre N° de Tél</label> : <input  size="15" type="tel" name="phone" id="phone" placeholder="Type your phone number here.">
-                                <label>Votre e-mail</label> : <input size="15" type="mail" name="email" id="email" placeholder="Type your e-mail here.">
-                            </p>
-                            <p> Vous bénéficiez de :
-                                <label>l'ARE</label> : <input type="checkbox" name="man" id="man"> <br>
-                                <label>la pension retraité</label> : <input type="checkbox" name="woman" id="woman">
-                            </p>
-                            <p>
-                                <!-- La variable name ici est la même sur chaque ligne car elle changera selon l'id selectionné. -->
-                                <label>Moins de 15 ans</label> : <input type="radio" name="ageRange" value="moins15" id="moins15">
-                                <label>Moins de 25 ans</label> : <input type="radio" name="ageRange" value="moins25" id="moins25">
-                                <label>Moins de 60 ans</label> : <input type="radio" name="ageRange" value="moins60" id="moins60">
-                                <label>Plus de 25 ans</label> : <input type="radio" name="ageRange" value="plus60" id="plus60">
-                            </p>
-                            <p>
-                                <label>Votre nombre</label> : <input type="number" name="number" id="number" placeholder="Type a random number here.">
-                                <label>Votre choix</label> : <input type="range" name="range" id="range">
-                            </p>
-                             <p>
-                                <label>Votre date de naissance</label> : <input type="date" name="date" id="date">
-                                <label>Heure</label> : <input type="time" name="hour" id="hour" >
-                                <label>Semaine</label> : <input type="week" name="week" id="week" placeholder="Type the week here.">
-                                <label>Mois</label> : <input type="month" name="month" id="month"  placeholder="Type the month here.">
-                                <label>Datetime</label> : <input type="datetime-local" name="datetime" id="datetime">
-                            </p>
-                            <p>
-                                <label>Searchbar</label> : <input type="search" name="search" id="search" placeholder="Search">
-                                <label>Boîte à texte</label> : <input type="text" name="textbox" id="textbox" placeholder="Type anything.">
-                                <!-- Atributs de input : value, pleceholder, max-length, size  -->
-                                <!-- OU si on ne fait qu'une ligne, ce sera <input type="text" name="prenom" id="prenom"> . La variable name doit "pointer" vers l'id prenom
-                                car le name va appeler la valeur tapée dans l'input grâce l'id prenom. -->
-                                <textarea type="text" name="commentary" id="commentary" placeholder="Type your comments here.">  </textarea>
-                            </p>
-                            <p>
-                                <!--  Ajouter un for="pays" au label permet de sélectionner notre champ d'input quand on survole le label. -->
-                                <label for="pays"> De quel pays venez-vous ?</label><br>
-                                <select name="pays" id="pays">
-                                    <option value="Sénégal">Sénégal</option>
-                                    <option value="UK">UK</option>
-                                    <!-- Le selected (sélectionné par défaut) ne fontionnera pas si mon URL dans la barre d'adrese est parasitée de valeurs ajoutées par le GET -->
-                                    <option value="France métropolitaine" selected>France métropolitaine</option>
-                                    <option value="DROM">DROM</option>
-                                </select>
-                            </p>
-                            <p>
-                                <label>Une fois terminé, veuillez soumettre ce formulaire</label> : <input type="submit" value="envoyer" name="button" id="button">
-                             </p>
-                        </fieldset>
-                    </form>
+                 
                 </div>
             <div class="flashcard">
                 <h3 id="species"> Espèces </h3>

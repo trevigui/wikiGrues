@@ -15,13 +15,15 @@ navigateur*/
 
 *{
     /* Marge = marge extérieure à notre boîte*/
-    margin: 0;
     /* Padding = marge intérieure à notre boîte, utilisée pour agrandir facilement des éléments en responsive*/
-    padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Alignement au bord de l'écran */
     /* autre méthode facile pour les polices courantes => font-family: Calibri; */
     font-family: 'Roboto', sans-serif;
 }
+
+    /* Mettre des pourcentages plutôt que des px dans la limite width arbitraire change le comportemetn du zoom. Tester en mode mobile sur l'inspecteur */
+
+
 /******************************************************* Exemple *********************************************************************/
 
 /* la suivante ligne h1 est un sélecteur,
@@ -32,42 +34,28 @@ h1{
 
 /******************************************************* Header *********************************************************************/
 
-body {
-    /*margin: auto;
-    width:1000px ;
-    /* Mettre des pourcentages dans la limite width arbitraire et tester le zoom. Tester en mode mobile sur l'inspecteur */
-}
-
-.hautDePage{
-    /* hautDePage agit sur le logo ET les éléments de menus mais pas les éléments de menu
-    individuellement, donc je ne peux pas encore horizontaliser tout individuellement*/
-    display: flex;
-    /* Je répartis la photo et les éléments de menu sur la page au centre*/
-    background-color: darkolivegreen;
-    align-items: center;
-    font-size: 1em; /*(Ici, cela influence la taille de mon logo)*/
-}
-
 .logo{
     /* Quand width est utilisé le paramètre height n'est souvent pas nécessaire car width change aussi la hauteur. */
-   width: 4em;
-   border-radius: 50%;
+    width: 4em;
+    border-radius: 50%;
    /* les valeurs de la box-shadow sont X-axis, Y-axis, blur, et spread.*/
    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5) ;
    /*L'unité px em ou rem doit être collée au nombre choisi pour fonctionner*/
-   margin-left: 1em;
-   margin-top: 0.5rem;
-   margin-bottom: 0.5rem;
-   display:flex;
-   justify-content:center;
+
+   animation: rainbowww 13s linear infinite;
+}
+
+.desktopMenu .desktopList {
+    display: flex ;
+    align-items: center;
 }
 
 /*Pour agir sur un enfant de header, je préfère agir sur le nav que le div.
 Agir sur le div ne fonctionnerait pas par défaut. nav=plus facile*/
 /*On ne met pas de point car il n'y a pas d'appel de classe*/
-nav ul li {
+.desktopMenu .desktopList li {
 /* display: inline */
-display: inline;
+    display: inline;
     margin-left: 20px; /* On utilisera gap si on veut que l'espace soit entre chaque élément,
                         Ici, je préfère utilsier margin-left pour éloigner mon navbar du logo */
     text-shadow: 3px 3px 0px rgba(0,0,0,0.3) ;
@@ -75,7 +63,7 @@ display: inline;
 
 /*Quand utilise comme sélecteur CSS une balise HTML préexistante comme main (qui n'est pas une classe qu'on a créée nous-même,
 On ne mets pas de point devant pour l'appeler*/
-nav ul li a {
+.desktopMenu .desktopList li a {
     /* On enlève le soulignement des liens "a" (et les bullet points ?)*/
     /* On ne peut pas appliquer cette option au <li> juste avant
     qui n'est pas considéré comme un parent car il est sur la même ligne*/
@@ -85,17 +73,18 @@ nav ul li a {
 
 /* On peut utiliser :hover ou :visited ici ((:visited ne fonctionnera que si toutes nos pages ont des headers))*/
 /* On pourra utiliser :focus (barre de texte clignotante) ou :active avec le paramètres color-background */
-nav ul li a:hover {
+.desktopMenu .desktopList li a:hover {
     color:#556b2f;
 }
 
 .topButton {
     width: 5em;
     height: 3em;
-    border-style: none;
+    border-style: inset;
     /* On mettra un border-radius de 50% (tout pour un cercle*/
     border-radius: 10% 10% 10% 10% / 20% 20% 20% 20% ;
-    border-color:#556b2f;
+    border-color: white;
+    border-width: 1px;
     background:#9ca86a;
     transition-duration: 0.4s;
 }
@@ -104,15 +93,101 @@ nav ul li a:hover {
 .topButton:hover {
    background-color: white;
 }
-/******************************************************* body *********************************************************************/
+
+
+.desktopMenu {
+    display: none; /* REMETTRE EN DISPLAY-FLEX !!!!!! */
+
+    /* desktopMenu agit sur le logo ET les éléments de menus mais pas les éléments de menu
+    individuellement, donc je ne peux pas encore horizontaliser tout individuellement*/
+    /* Je répartis la photo et les éléments de menu sur la page au centre*/
+    background-color: darkolivegreen;
+    font-size: 1em; /*(Ici, cela influence la taille de mon logo)*/
+}
+
+/* --------------------------------------------------------------------------------Burger menu-------------------------------------------------------------------------------------------------------- */
+
+/* On ne met pas mon logo dans la nav, uniquement les liens/boutons */
+
+
+.mobileMenu {
+    /* Pour que le menu reste en place quand on scroll */
+    position: fixed;
+}
+
+.mobileLogo {
+    width:1em;
+}
+
+.mobileList {
+    display: flex;
+    flex-direction: column;
+    background: darkolivegreen;
+    overflow: hidden;
+    width: 200px;
+    /* Pour que les liens soient "rangés" par défaut */
+    transform: translateX(-200px);
+}
+
+.mobileList li a {
+    text-decoration: none;
+    color: khaki;
+}
+
+#hamburger {
+    /* Pour que la checkbox ne s'affiche pas */
+    display: none;
+}
+  
+#hamburger-logo {
+  /* Pour que le curseur soit un pointeur */
+  cursor: pointer;
+  background: darkolivegreen;
+  width: 200px;
+  /* forme influencée par la forme parente ? */
+  display: block;
+  color: white;
+  /* Pour que le menu hamburger s'affiche toujours */
+  text-align: right;
+  /* Pour que le menu hamburger soit "rangé" par défaut */
+  transform: translateX(-168px);
+  padding: 10px;
+}
+
+#hamburger-logo, .mobileList {
+  /* Pour qu'il y ait une animation */
+  /* Ne pas le mettre uniquement sur le #hamburger:checked permet de mettre la transition à l'ouverture et la fermeture. */
+  transition: 0.5s;
+  outline: solid darkolivegreen 1px /* Cela me permet de remplir la ligne de 1px d'espace vide entre mon hamburger-logo et .mobileList */
+}
+
+/* Lorsque #hamburger est coché, le #hamburger-logo et le .mobileList qui sont dans le même parent changent de propriété. */
+#hamburger:checked ~ #hamburger-logo, #hamburger:checked ~ .mobileList {
+  /* Changement de la position pour afficher les menus */
+  transform: translate(0);
+  shape-outside: circle(50%);
+}
+
+.mobileList a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  width: 100%; /* Permet de m'assurer que les liens prennent toute la longueur du .mobileList et que l'arrière plan en a:hover n'entoure pas que le texte mais le bouton au complet */
+}
+
+.mobileList a:hover {
+  background: rgb(144, 163, 109);
+}
+
+/************************************************************************************ body ************************************************************************************************************/
 
 body{
     /* On peut rajouter la valeur cover center au paramètre background*/
     /* On peut utiliser soit la paramètre background: ou background-repeat: ou background-machin */  
-    margin-top: 1em; 
     background-image: url("background.jpg");
     background-repeat: repeat;
     background-size : 1em;
+    margin: 0 ; /* Nécessaire pour que la navbar et le menu ne flottent pas et soit collée au bord gauche */
     /* On peut aussi faire un background-position, background: url(), background: linear-gradient(90deg, #8360c3, #2ebf92); opacity:0,3; */
 }
 
@@ -121,14 +196,14 @@ body{
     /* Je ne mets pas de margin: bottom pour éviter une double espacement entre les sections */
     margin-left: 1em;
     margin-right: 1em;
-padding: 1em;
+    padding: 1em;
     border: 1 px;
     border-color:#556b2f;
     border-style: solid;
 }
 
 .images {
-    width: 8em;
+    width: 18em;
     border-width: 1em;
     border-color: darkolivegreen;
     border-style: none;
@@ -187,8 +262,43 @@ margin-right: 1em;
     margin-bottom: 1em;
 }
 
+/* Pour sélectionner spécifiquement l'attribut "text" de input, je tape input[type="text"]*/
+/* Pour sélectionner plusieurs attributs dans input, je crée un tableau à l'aide de is  */
+input:is([type="text"], [type="email"], [type="number"], [type="tel"], [type="url"], [type="search"], [type="password"], [type="date"], [type="month"], [type="week"], [type="time"], [type="datetime-local"], [type="color"]) {
+    background-color: #9ea77c;
+   }
+
 textarea {
-    resize:none; 
+    resize:none;
+    background-color: green; 
+ 
+   animation: rainbowww 13s linear infinite;
+
+}
+
+@keyframes rainbowww {
+    0%{
+        background-color: rgb(198, 198, 126);
+    }
+    25%{
+       background-color: rgb(170, 216, 124);
+    }
+    45%{
+        background-color: rgb(198, 198, 126);
+    }
+    70%{
+        background-color: rgb(170, 216, 124);
+    }
+    85%{
+        background-color: rgb(198, 198, 126);
+    }
+    100%{
+        background-color: rgb(170, 216, 124);
+     }
+}
+
+select {
+    background-color: #9ea77c;
 }
 
 /* ------------------------------------------------- TABLEAUX BOITES ------------------------------------------------------------------------------------ */
@@ -221,7 +331,6 @@ table {
 caption {
     font-size: 60px;
 }
-
 
 .boxAll {
     /* Pour notre grille on peut utiliser grid-column-start:1, grid-column-end:4, grid-row-start, grid-row-end */
