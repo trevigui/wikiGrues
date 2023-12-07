@@ -118,10 +118,10 @@ On ne mets pas de point devant pour l'appeler*/
     display: flex;
     flex-direction: column;
     background: darkolivegreen;
-    overflow: hidden; /* Le texte qui dépasse de la boîte sera caché à l'intérieur du div */
+    overflow: hidden; /* Le texte qui dépasse de la boîte sera caché à l'intérieur du div
     width: 200px;
-    /* Pour que les liens soient "rangés" par défaut */
-    transform: translateX(-200px); /* Pour que la liste de liens du menu soit en position "rangé" par défaut, et un peu plus (-200) que le logo. */
+    /* Pour que les liens soient "rangés" par défaut
+    transform: translateX(-200px); /* Pour que la liste de liens du menu soit en position "rangé" par défaut, et un peu plus (-200) que le logo. 
 }
 */
 
