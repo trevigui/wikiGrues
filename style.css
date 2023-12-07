@@ -33,16 +33,21 @@ h1{
 }
 
 /******************************************************* Header *********************************************************************/
-
 .logo{
     /* Quand width est utilisé le paramètre height n'est souvent pas nécessaire car width change aussi la hauteur. */
-    width: 4em;
+    margin-right: 2em;
+    width: 3em;
     border-radius: 50%;
    /* les valeurs de la box-shadow sont X-axis, Y-axis, blur, et spread.*/
    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5) ;
    /*L'unité px em ou rem doit être collée au nombre choisi pour fonctionner*/
 
    animation: rainbowww 13s linear infinite;
+}
+
+.desktopMenu {
+    background-color: darkolivegreen;
+/* Attention, font-size influence la taille de mon logo (à cause de alt?) */
 }
 
 .desktopMenu .desktopList {
@@ -54,7 +59,6 @@ h1{
 Agir sur le div ne fonctionnerait pas par défaut. nav=plus facile*/
 /*On ne met pas de point car il n'y a pas d'appel de classe*/
 .desktopMenu .desktopList li {
-/* display: inline */
     display: inline;
     margin-left: 20px; /* On utilisera gap si on veut que l'espace soit entre chaque élément,
                         Ici, je préfère utilsier margin-left pour éloigner mon navbar du logo */
@@ -68,24 +72,26 @@ On ne mets pas de point devant pour l'appeler*/
     /* On ne peut pas appliquer cette option au <li> juste avant
     qui n'est pas considéré comme un parent car il est sur la même ligne*/
     text-decoration: none;
-    color: khaki;
+    color: #556b2f;
+    font-size: 2em;
 }
 
 /* On peut utiliser :hover ou :visited ici ((:visited ne fonctionnera que si toutes nos pages ont des headers))*/
 /* On pourra utiliser :focus (barre de texte clignotante) ou :active avec le paramètres color-background */
 .desktopMenu .desktopList li a:hover {
-    color:#556b2f;
+    color:#141306;
+    font: weight;
 }
 
 .topButton {
-    width: 5em;
-    height: 3em;
-    border-style: inset;
+    padding : 1em; /*Préférer un padding all-around plutôt que de forcer une height et une width, le padding s'adapte à la taille de ma police */
+    border-style: none;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5) ;;
     /* On mettra un border-radius de 50% (tout pour un cercle*/
     border-radius: 10% 10% 10% 10% / 20% 20% 20% 20% ;
     border-color: white;
     border-width: 1px;
-    background:#9ca86a;
+    background: #b9ce7d;
     transition-duration: 0.4s;
 }
 
@@ -94,39 +100,34 @@ On ne mets pas de point devant pour l'appeler*/
    background-color: white;
 }
 
-
-.desktopMenu {
-    display: none; /* REMETTRE EN DISPLAY-FLEX !!!!!! */
-
-    /* desktopMenu agit sur le logo ET les éléments de menus mais pas les éléments de menu
-    individuellement, donc je ne peux pas encore horizontaliser tout individuellement*/
-    /* Je répartis la photo et les éléments de menu sur la page au centre*/
-    background-color: darkolivegreen;
-    font-size: 1em; /*(Ici, cela influence la taille de mon logo)*/
-}
-
 /* --------------------------------------------------------------------------------Burger menu-------------------------------------------------------------------------------------------------------- */
 
 /* On ne met pas mon logo dans la nav, uniquement les liens/boutons */
 
-
 .mobileMenu {
     /* Pour que le menu reste en place quand on scroll */
     position: fixed;
+    display: none;
 }
 
 .mobileLogo {
     width:1em;
 }
 
-.mobileList {
+/*.mobileList {
     display: flex;
     flex-direction: column;
     background: darkolivegreen;
-    overflow: hidden;
+    overflow: hidden; /* Le texte qui dépasse de la boîte sera caché à l'intérieur du div */
     width: 200px;
     /* Pour que les liens soient "rangés" par défaut */
-    transform: translateX(-200px);
+    transform: translateX(-200px); /* Pour que la liste de liens du menu soit en position "rangé" par défaut, et un peu plus (-200) que le logo. */
+}
+*/
+
+.mobileList {
+    display: flex;
+    flex-direction: column;
 }
 
 .mobileList li a {
@@ -145,31 +146,31 @@ On ne mets pas de point devant pour l'appeler*/
   background: darkolivegreen;
   width: 200px;
   /* forme influencée par la forme parente ? */
-  display: block;
+  display: block; /* Sert à dire, je veux forcer le changement d'état du logo (translate:) */
   color: white;
   /* Pour que le menu hamburger s'affiche toujours */
   text-align: right;
-  /* Pour que le menu hamburger soit "rangé" par défaut */
-  transform: translateX(-168px);
+    transform: translateX(-168px);   /* Pour que le menu hamburger soit en position "rangé" par défaut */
   padding: 10px;
+  
 }
 
 #hamburger-logo, .mobileList {
   /* Pour qu'il y ait une animation */
   /* Ne pas le mettre uniquement sur le #hamburger:checked permet de mettre la transition à l'ouverture et la fermeture. */
-  transition: 0.5s;
-  outline: solid darkolivegreen 1px /* Cela me permet de remplir la ligne de 1px d'espace vide entre mon hamburger-logo et .mobileList */
+  transition: 0.3s;
+  outline: solid darkolivegreen 1px ;/* Cela me permet de remplir la ligne de 1px d'espace vide entre mon hamburger-logo et .mobileList */
 }
 
-/* Lorsque #hamburger est coché, le #hamburger-logo et le .mobileList qui sont dans le même parent changent de propriété. */
+/* Condition : #hamburger est coché, et sélection d'un ID adjacent dans le HTML (pas enfant de #hamburger) #hamburger-logo grâce à la tilde. */
+/* Condition : #hamburger est coché, et sélection d'un ID adjacent dans le HTML (pas enfant de #hamburger) .mobileList grâce à la tilde. */
 #hamburger:checked ~ #hamburger-logo, #hamburger:checked ~ .mobileList {
-  /* Changement de la position pour afficher les menus */
+  /* Retour à la position d'origine 0 de l'axe X quand on coche */
   transform: translate(0);
-  shape-outside: circle(50%);
 }
 
 .mobileList a {
-  color: white;
+    color: white ;
   text-decoration: none;
   padding: 10px;
   width: 100%; /* Permet de m'assurer que les liens prennent toute la longueur du .mobileList et que l'arrière plan en a:hover n'entoure pas que le texte mais le bouton au complet */
@@ -189,6 +190,7 @@ body{
     background-size : 1em;
     margin: 0 ; /* Nécessaire pour que la navbar et le menu ne flottent pas et soit collée au bord gauche */
     /* On peut aussi faire un background-position, background: url(), background: linear-gradient(90deg, #8360c3, #2ebf92); opacity:0,3; */
+    /* width: 0px ; Censé faire en sorte que le menu ne soit pas sur le texte en position fermée, dans les faits ça casse tout. */
 }
 
 .content {
@@ -203,7 +205,7 @@ body{
 }
 
 .images {
-    width: 18em;
+    width: 20em;
     border-width: 1em;
     border-color: darkolivegreen;
     border-style: none;
@@ -429,7 +431,7 @@ padding: 1em;
     width: 5em;
     height: 5em;
     border-style: solid;
-    /* On mettra un border-radius de 50% (tout pour un cercle*/
+    /* On mettra un border-radius de 50% (pour un cercle)*/
     border-radius: 50% ;
     border-color:#556b2f;
     background:#9ca86a;
@@ -439,7 +441,510 @@ padding: 1em;
     width: 20px;
 }
 
-/******************************************************* footer *********************************************************************/
+/************************************************************ Section 3 .wrapper ****************************************************************************/
+
+
+.wrapper {
+    display:flex;
+    animation: change-background 3s infinite linear;
+    position: relative;
+    left: 75%;
+    bottom: 50%;
+    transform: scale(1.5, 1.5) translate(-50%, -50%);
+
+    margin-top:20em;
+
+}
+  
+.floor {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 55vw;
+    height: 5px;
+    background: #dbb8d8;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 2px 5px #111;
+    z-index: 2;
+}
+  
+.candles {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 250px;
+    height: 150px;
+    transform: translate(-50%, -100%);
+    z-index: 1;
+}
+  
+.candle1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 35px;
+    height: 100px;
+    background: #fff;
+    border: 3px solid #dbb8d8;
+    border-bottom: 0px;
+    border-radius: 3px;
+    transform-origin: center right;
+    transform: translate(60%, -25%);
+    box-shadow: -2px 0px 0px #95c6f2 inset;
+    animation: expand-body 3s infinite linear;
+}
+  
+.candle1__stick, .candle2__stick {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    width: 3px;
+    height: 15px;
+    background: #dbb8d8;
+    border-radius: 8px;
+    transform: translate(-50%, -100%);
+}
+  
+.candle2__stick {
+    height: 12px;
+    transform-origin: bottom center;
+    animation: stick-animation 3s infinite linear;
+}
+  
+.candle1__eyes, .candle2__eyes {
+position: absolute;
+left: 50%;
+top: 0%;
+width: 35px;
+height: 30px;
+transform: translate(-50%, 0%);
+}
+
+.candle1__eyes-one {
+position: absolute;
+left: 30%;
+top: 20%;
+width: 5px;
+height: 5px;
+border-radius: 100%;
+background: #673C63;
+transform: translate(-70%, 0%);
+animation: blink-eyes 3s infinite linear;
+}
+
+.candle1__eyes-two {
+position: absolute;
+left: 70%;
+top: 20%;
+width: 5px;
+height: 5px;
+border-radius: 100%;
+background: #673C63;
+transform: translate(-70%, 0%);
+animation: blink-eyes 3s infinite linear;
+}
+
+.candle1__mouth {
+position: absolute;
+left: 40%;
+top: 20%;
+width: 0px;
+height: 0px;
+border-radius: 20px;
+background: #673C63;
+transform: translate(-50%, -50%);
+animation: uff 3s infinite linear;
+}
+
+.candle__smoke-one {
+position: absolute;
+left: 30%;
+top: 50%;
+width: 30px;
+height: 3px;
+background: grey;
+transform: translate(-50%, -50%);
+animation: move-left 3s infinite linear;
+}
+
+.candle__smoke-two {
+position: absolute;
+left: 30%;
+top: 40%;
+width: 10px;
+height: 10px;
+border-radius: 10px;
+background: grey;
+transform: translate(-50%, -50%);
+animation: move-top 3s infinite linear;
+}
+
+.candle2 {
+position: absolute;
+left: 20%;
+top: 65%;
+width: 42px;
+height: 60px;
+background: #fff;
+border: 3px solid #dbb8d8;
+border-bottom: 0px;
+border-radius: 3px;
+transform: translate(60%, -15%);
+transform-origin: center right;
+box-shadow: -2px 0px 0px #95c6f2 inset;
+animation: shake-left 3s infinite linear;
+}
+
+.candle2__eyes-one {
+position: absolute;
+left: 30%;
+top: 50%;
+width: 5px;
+height: 5px;
+display: inline-block;
+border: 0px solid #673C63;
+border-radius: 100%;
+float: left;
+background: #673C63;
+transform: translate(-80%, 0%);
+animation: changeto-lower 3s infinite linear;
+}
+
+.candle2__eyes-two {
+position: absolute;
+left: 70%;
+top: 50%;
+width: 5px;
+height: 5px;
+display: inline-block;
+border: 0px solid #673C63;
+border-radius: 100%;
+float: left;
+background: #673C63;
+transform: translate(-80%, 0%);
+animation: changeto-greater 3s infinite linear;
+}
+
+.light__wave {
+position: absolute;
+top: 35%;
+left: 35%;
+width: 75px;
+height: 75px;
+border-radius: 100%;
+z-index: 0;
+transform: translate(-25%, -50%) scale(2.5, 2.5);
+border: 2px solid rgba(255, 255, 255, 0.2);
+animation: expand-light 3s infinite linear;
+}
+
+.candle2__fire {
+position: absolute;
+top: 50%;
+left: 40%;
+display: block;
+width: 16px;
+height: 20px;
+background-color: red;
+border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+background: #FF9800;
+transform: translate(-50%, -50%);
+animation: dance-fire 3s infinite linear;
+}
+  
+  @keyframes blink-eyes {
+    0%,35% {
+      opacity: 1;
+      transform: translate(-70%, 0%);
+    }
+    36%,39% {
+      opacity: 0;
+      transform: translate(-70%, 0%);
+    }
+    40% {
+      opacity: 1;
+      transform: translate(-70%, 0%);
+    }
+    50%,65% {
+      transform: translate(-140%, 0%);
+    }
+    66% {
+      transform: translate(-70%, 0%);
+    }
+  }
+  @keyframes expand-body {
+    0%,40% {
+      transform: scale(1, 1) translate(60%, -25%);
+    }
+    45%,55% {
+      transform: scale(1.1, 1.1) translate(60%, -28%);
+    }
+    60% {
+      transform: scale(0.89, 0.89) translate(60%, -25%);
+    }
+    65% {
+      transform: scale(1, 1) translate(60%, -25%);
+    }
+    70% {
+      transform: scale(0.95, 0.95) translate(60%, -25%);
+    }
+    75% {
+      transform: scale(1, 1) translate(60%, -25%);
+    }
+  }
+  @keyframes uff {
+    0%,40% {
+      width: 0px;
+      height: 0px;
+    }
+    50%,54% {
+      width: 15px;
+      height: 15px;
+      left: 30%;
+    }
+    59% {
+      width: 5px;
+      height: 5px;
+      left: 20%;
+    }
+    62% {
+      width: 2px;
+      height: 2px;
+      left: 20%;
+    }
+    67% {
+      width: 0px;
+      height: 0px;
+      left: 30%;
+    }
+  }
+  @keyframes change-background {
+    0%,59%,98%,100% {
+      background: #FFF;
+    }
+    61%,97% {
+      background: #000;
+    }
+  }
+  @keyframes move-left {
+    0%,59%,100% {
+      width: 0px;
+      left: 40%;
+    }
+    60% {
+      width: 30px;
+      left: 30%;
+    }
+    68% {
+      width: 0px;
+      left: 20%;
+    }
+  }
+  @keyframes move-top {
+    0%,64%,100% {
+      width: 0px;
+      height: 0px;
+      top: 0%;
+    }
+    65% {
+      width: 10px;
+      height: 10px;
+      top: 40%;
+      left: 40%;
+    }
+    80% {
+      width: 0px;
+      height: 0px;
+      top: 20%;
+    }
+  }
+  @keyframes shake-left {
+    0%,40% {
+      left: 20%;
+      transform: translate(60%, -15%);
+    }
+    50%,54% {
+      left: 20%;
+      transform: translate(60%, -15%);
+    }
+    59% {
+      left: 20%;
+      transform: translate(60%, -15%);
+    }
+    62% {
+      left: 18%;
+      transform: translate(60%, -15%);
+    }
+    65% {
+      left: 21%;
+      transform: translate(60%, -15%);
+    }
+    67% {
+      left: 20%;
+      transform: translate(60%, -15%);
+    }
+    75% {
+      left: 20%;
+      transform: scale(1.15, 0.85) translate(60%, -15%);
+      background: #fff;
+      border-color: #673C63;
+    }
+    91% {
+      left: 20%;
+      transform: scale(1.18, 0.82) translate(60%, -10%);
+      background: #F44336;
+      border-color: #F44336;
+      box-shadow: -2px 0px 0px #F44336 inset;
+    }
+    92% {
+      left: 20%;
+      transform: scale(0.85, 1.15) translate(60%, -15%);
+    }
+    95% {
+      left: 20%;
+      transform: scale(1.05, 0.95) translate(60%, -15%);
+    }
+    97% {
+      left: 20%;
+      transform: scale(1, 1) translate(60%, -15%);
+    }
+  }
+  @keyframes stick-animation {
+    0%,40% {
+      left: 50%;
+      top: 0%;
+      transform: translate(-50%, -100%);
+    }
+    50%,54% {
+      left: 50%;
+      top: 0%;
+      transform: translate(-50%, -100%);
+    }
+    59% {
+      left: 50%;
+      top: 0%;
+      transform: translate(-50%, -100%);
+    }
+    62% {
+      left: 50%;
+      top: 0%;
+      transform: rotateZ(-15deg) translate(-50%, -100%);
+    }
+    65% {
+      left: 50%;
+      top: 0%;
+      transform: rotateZ(15deg) translate(-50%, -100%);
+    }
+    70% {
+      left: 50%;
+      top: 0%;
+      transform: rotateZ(-5deg) translate(-50%, -100%);
+    }
+    72% {
+      left: 50%;
+      top: 0%;
+      transform: rotateZ(5deg) translate(-50%, -100%);
+    }
+    74%,84% {
+      left: 50%;
+      top: 0%;
+      transform: rotateZ(0deg) translate(-50%, -100%);
+    }
+    85% {
+      transform: rotateZ(180deg) translate(0%, 120%);
+    }
+    92% {
+      left: 50%;
+      top: 0%;
+      transform: translate(-50%, -100%);
+    }
+  }
+  @keyframes expand-light {
+    10%,29%,59%,89% {
+      transform: translate(-25%, -50%) scale(0, 0);
+      border: 2px solid rgba(255, 255, 255, 0);
+    }
+    90%,20%,50% {
+      transform: translate(-25%, -50%) scale(1, 1);
+    }
+    95%,96%,26%,27%,56%,57% {
+      transform: translate(-25%, -50%) scale(2, 2);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+    0%,28%,58%,100% {
+      transform: translate(-25%, -50%) scale(2.5, 2.5);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+  @keyframes dance-fire {
+    59%,89% {
+      left: 40%;
+      width: 0px;
+      height: 0px;
+    }
+    90%,0%,7%,15%,23%,31%,39%,47%,55% {
+      left: 40.8%;
+      width: 16px;
+      height: 20px;
+      background: #FFC107;
+    }
+    94%,3%,11%,19%,27%,35%,43%,51%,58% {
+      left: 41.2%;
+      width: 16px;
+      height: 20px;
+      background: #FF9800;
+    }
+  }
+  @keyframes changeto-lower {
+    0%,70%,90% {
+      padding: 0px;
+      display: inline-block;
+      border-radius: 100%;
+      background: #673C63;
+      border-width: 0 0 0 0;
+      border: 0px solid #673C63;
+      transform: translate(-90%, 0%);
+    }
+    71%,89% {
+      background: none;
+      border: solid #673C63;
+      border-radius: 0px;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 1px;
+      float: left;
+      transform-origin: bottom left;
+      transform: rotate(-45deg) translate(-50%, -65%);
+      -webkit-transform: rotate(-45deg) translate(-50%, -65%);
+    }
+  }
+  @keyframes changeto-greater {
+    0%,70%,90% {
+      top: 50%;
+      padding: 0px;
+      display: inline-block;
+      border-radius: 100%;
+      background: #673C63;
+      border-width: 0 0 0 0;
+      border: 0px solid #673C63;
+      transform: translate(-80%, 0%);
+    }
+    71%,89% {
+      top: 30%;
+      background: none;
+      border: solid #673C63;
+      border-radius: 0px;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 1px;
+      float: left;
+      transform-origin: bottom left;
+      transform: rotate(135deg) translate(-80%, 20%);
+      -webkit-transform: rotate(135deg) translate(-80%, 20%);
+    }
+  }
+
+/***************************************************************** footer ***********************************************************************************/
 
 .pageBottom {
     background-color: darkolivegreen;
@@ -454,3 +959,40 @@ padding: 1em;
     color: khaki;
     margin-left: 20px;
 }
+
+/* *************************************************** media queries *********************************************************************** */
+/*Il est toujours au bas du document, le caractère responsive est développé en dernier ****************************************************** */
+/* On ne paramètre pas de and(min-width:0) */
+/* On évite de configurer "en dur" la disparition d'élements (display:none) sur nos éléments .DesktopMenu et .mobileMenu dans le CSS normal, sinon le CSS du media query ne pourra pas overwrite ce paramètre.*/
+
+/* Pour les tablettes */
+@media screen and (max-width:800px) {
+    .desktopMenu {
+        display: none;
+    }
+
+    .mobileMenu  {
+        display: block;
+    }
+
+    .images {
+        width: 30vw; /*Avec l'unité vw (pourcents du viewport), la width de mes images grandit selon mon viewport */
+    }
+
+    .boxAll {
+        padding: 1em;
+       /* overflow: scroll; */
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width:800px) { /* Le min-width est plus difficile à appréhender */
+
+    .mobileMenu {
+        display: none;
+    }
+    .desktopMenu {
+        display: flex;
+    }
+}
+

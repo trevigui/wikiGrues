@@ -6,8 +6,8 @@
 <!-- Le head contient les métadonnées invisibles -->
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Content="width=devide-width" implique que le viewport s'adapte à la taille de l'écran -->
+    <link href="style.css" rel="stylesheet" type="text/css"> <!-- media=screen ou print ou speech permet de mettre une feuille de style différente selon le type de média -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="monimage.ico">
@@ -19,7 +19,7 @@
 <!-- Le text-align peut être utile pour aligner le texte aux autres éléments d'une boîte.-->
 <!-- A Class name can be used by multiple HTML elements, while an ID name must only be used by one HTML element within the page.-->
 <!-- Le body contient la partie émergée du code -->
-<body>
+<body id="pageTop">
     <header>
         <!-- On fait un div contenant notre div img et notre div nav, il faut autant de boîtes div que possible.-->
         <!-- J'indique dans le tag div la classe nommée hautDePage" que j'ai créé
@@ -31,7 +31,7 @@
                     <!-- On ne met pas de style="width:20em" à notre image, on le fera sur du CSS, pas sur du HTML-->
                     <li><a href="#" target="_blank"><img class="logo" src="monimage.png" alt="Logo du site"></a></li>
                     <!-- href="#" tout seul signifie que l'on est redirigé vers la même page-->
-                    <li><button type="button" class="topButton"><a href="#" target="_blank">Accueil</a></button></li>
+                    <li><button type="button" class="topButton"><a href="index.html" target="_blank">Accueil</a></button></li>
                     <li><button type="button" class="topButton"><a href="navigation/service.html" target="_blank">Service</a></button></li>
                     <li><button type="button" class="topButton"><a href="navigation/produit.html" target="_blank">Produit</a></button></li>
                     <li><button type="button" class="topButton"><a href="navigation/contact.html" target="_blank">Contact</a></button></li>
@@ -50,7 +50,6 @@
                     <a href="/navigation/contact.html">Contact</a>
                 </nav>
             </div>
-            </a> 
         </div>
     </header>
     <main>
@@ -137,11 +136,43 @@
                 <div class="box8_2 boxAll"> W</div>
             </article>
         </section>
-        <div class="fond2">
-            <div class="margin2">
-                <a href="#pageTop"><button id="bottomButton"><img class="upArrow" src="upArrow.svg"></button></a>
+        <section class="content">
+            <div class="wrapper">
+                <div class="candles">
+                    <div class="light__wave"></div>
+                        <div class="candle1">
+                            <div class="candle1__body">
+                                <div class="candle1__eyes">
+                                    <span class="candle1__eyes-one"></span>
+                                    <span class="candle1__eyes-two"></span>
+                                </div>
+                                <div class="candle1__mouth"></div>
+                            </div>
+                            <div class="candle1__stick"></div>
+                        </div>
+                        <div class="candle2">
+                            <div class="candle2__body">
+                                <div class="candle2__eyes">
+                                    <div class="candle2__eyes-one"></div>
+                                    <div class="candle2__eyes-two"></div>
+                                </div>
+                            </div>
+                            <div class="candle2__stick"></div>
+                        </div>
+                        <div class="candle2__fire"></div>
+                        <div class="sparkles-one"></div>
+                        <div class="sparkles-two"></div>
+                        <div class="candle__smoke-one"></div>
+                        <div class="candle__smoke-two"></div>
+                </div>
+                <div class="floor"></div>
             </div>
-        </div>
+        </section>
+            <div class="fond2">
+                <div class="margin2">
+                    <a href="#pageTop"><button id="bottomButton"><img class="upArrow" src="upArrow.svg"></button></a>
+                </div>
+            </div>
     </main>
     <footer>
         <div class="pageBottom">
