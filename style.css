@@ -33,6 +33,7 @@ h1{
 }
 
 /******************************************************* Header *********************************************************************/
+
 .logo{
     /* Quand width est utilisé le paramètre height n'est souvent pas nécessaire car width change aussi la hauteur. */
     margin-right: 2em;
@@ -47,7 +48,9 @@ h1{
 
 .desktopMenu {
     background-color: darkolivegreen;
-/* Attention, font-size influence la taille de mon logo (à cause de alt?) */
+    position: fixed;
+    width: 100%;
+/* Attention, font-size influence la taille de mon logo (à cause de l'attribut alt ?) */
 }
 
 .desktopMenu .desktopList {
@@ -61,7 +64,7 @@ Agir sur le div ne fonctionnerait pas par défaut. nav=plus facile*/
 .desktopMenu .desktopList li {
     display: inline;
     margin-left: 20px; /* On utilisera gap si on veut que l'espace soit entre chaque élément,
-                        Ici, je préfère utilsier margin-left pour éloigner mon navbar du logo */
+                        Ici, je préfère utiliser margin-left pour éloigner mon navbar du logo */
     text-shadow: 3px 3px 0px rgba(0,0,0,0.3) ;
 }
 
@@ -73,7 +76,7 @@ On ne mets pas de point devant pour l'appeler*/
     qui n'est pas considéré comme un parent car il est sur la même ligne*/
     text-decoration: none;
     color: #556b2f;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 /* On peut utiliser :hover ou :visited ici ((:visited ne fonctionnera que si toutes nos pages ont des headers))*/
@@ -114,18 +117,11 @@ On ne mets pas de point devant pour l'appeler*/
     width:1em;
 }
 
-/*.mobileList {
-    display: flex;
-    flex-direction: column;
-    background: darkolivegreen;
-    overflow: hidden; /* Le texte qui dépasse de la boîte sera caché à l'intérieur du div
-    width: 200px;
-    /* Pour que les liens soient "rangés" par défaut
-    transform: translateX(-200px); /* Pour que la liste de liens du menu soit en position "rangé" par défaut, et un peu plus (-200) que le logo. 
-}
-*/
-
 .mobileList {
+    background: darkolivegreen;
+    overflow: hidden; /* Le texte qui dépasse de la boîte sera caché à l'intérieur du div */
+    width: 200px;
+    transform: translateX(-200px); /* Pour que la liste de liens du menu soit en position "rangé" par défaut, et un peu plus (-200) que le logo. */
     display: flex;
     flex-direction: column;
 }
@@ -144,15 +140,15 @@ On ne mets pas de point devant pour l'appeler*/
   /* Pour que le curseur soit un pointeur */
   cursor: pointer;
   background: darkolivegreen;
-  width: 200px;
+  width: 100vw;
   /* forme influencée par la forme parente ? */
-  display: block; /* Sert à dire, je veux forcer le changement d'état du logo (translate:) */
+  display: flex;
+  justify-content: center;
   color: white;
   /* Pour que le menu hamburger s'affiche toujours */
   text-align: right;
     transform: translateX(-168px);   /* Pour que le menu hamburger soit en position "rangé" par défaut */
   padding: 10px;
-  
 }
 
 #hamburger-logo, .mobileList {
@@ -185,7 +181,7 @@ On ne mets pas de point devant pour l'appeler*/
 body{
     /* On peut rajouter la valeur cover center au paramètre background*/
     /* On peut utiliser soit la paramètre background: ou background-repeat: ou background-machin */  
-    background-image: url("background.jpg");
+    background-image: url("/resources/background.jpg");
     background-repeat: repeat;
     background-size : 1em;
     margin: 0 ; /* Nécessaire pour que la navbar et le menu ne flottent pas et soit collée au bord gauche */
@@ -193,11 +189,15 @@ body{
     /* width: 0px ; Censé faire en sorte que le menu ne soit pas sur le texte en position fermée, dans les faits ça casse tout. */
 }
 
+main {
+  padding-top: 8em;
+}
+
 .content {
-    margin-top: 1em;
     /* Je ne mets pas de margin: bottom pour éviter une double espacement entre les sections */
     margin-left: 1em;
     margin-right: 1em;
+    margin-bottom: 1em;
     padding: 1em;
     border: 1 px;
     border-color:#556b2f;
@@ -252,29 +252,48 @@ body{
 }
 
 .spiel {
-margin-bottom: 2em;
-text-align:justify;
-margin-right: 1em;
-}
+  margin-bottom: 2em;
+  text-align: justify;
+  margin-right: 1em;
+  }
 
 .flashcard {
     border: 1 px;
-    border-color:#556b2f;
+    border-color: #556b2f;
     border-style: solid;
     margin-bottom: 1em;
+    padding: 1em;
 }
 
-/* Pour sélectionner spécifiquement l'attribut "text" de input, je tape input[type="text"]*/
-/* Pour sélectionner plusieurs attributs dans input, je crée un tableau à l'aide de is  */
-input:is([type="text"], [type="email"], [type="number"], [type="tel"], [type="url"], [type="search"], [type="password"], [type="date"], [type="month"], [type="week"], [type="time"], [type="datetime-local"], [type="color"]) {
-    background-color: #9ea77c;
-   }
+.parallaxFlashcard {
+  border: 1 px;
+  border-color:darkolivegreen;
+  border-style: solid;
+  margin-bottom: 1em;
+  padding: 1em;
+  
+  background-image: url("/resources/background.jpg") ;
+  background-size: 20em;
+  background-repeat: repeat;
+  background-attachment: fixed; /* Crée l'effet de parallax */
+/*  En cas de grande image de fond
+  background-position: center;
+  height: 100%;                 /* Equivalent "remplir"
+  background-size: cover;
+*/
+}
 
-textarea {
-    resize:none;
-    background-color: green; 
- 
-   animation: rainbowww 13s linear infinite;
+.parallaxFlashcard2 {
+  border: 1 px;
+  border-color:darkolivegreen;
+  border-style: solid;
+  margin-bottom: 1em;
+  padding: 1em;
+  
+  background-image: url("/resources/paralalala.jpg") ;
+  background-size: 20em;
+  background-repeat: repeat;
+  background-attachment: fixed;
 
 }
 
@@ -299,9 +318,26 @@ textarea {
      }
 }
 
+/* **********************************************************PAGE CONTACT******************************************************************* */
 select {
     background-color: #9ea77c;
 }
+
+textarea {
+  resize:none;
+  background-color: green; 
+
+ animation: rainbowww 13s linear infinite;
+}
+
+/* Pour sélectionner spécifiquement l'attribut "text" de input, je tape input[type="text"]*/
+/* Pour sélectionner plusieurs attributs dans input, je crée un tableau à l'aide de is  */
+input:is([type="text"], [type="email"], [type="number"], [type="tel"], [type="url"],
+ [type="search"], [type="password"], [type="date"], [type="month"], [type="week"],
+ [type="time"], [type="datetime-local"], [type="color"]) {
+  background-color: #9ea77c;
+ }
+
 
 /* ------------------------------------------------- TABLEAUX BOITES ------------------------------------------------------------------------------------ */
 
@@ -462,7 +498,7 @@ padding: 1em;
     top: 50%;
     width: 55vw;
     height: 5px;
-    background: #dbb8d8;
+    background: darkolivegreen;
     transform: translate(-50%, -50%);
     box-shadow: 0px 2px 5px #111;
     z-index: 2;
@@ -485,7 +521,7 @@ padding: 1em;
     width: 35px;
     height: 100px;
     background: #fff;
-    border: 3px solid #dbb8d8;
+    border: 3px solid darkolivegreen;
     border-bottom: 0px;
     border-radius: 3px;
     transform-origin: center right;
@@ -527,7 +563,7 @@ top: 20%;
 width: 5px;
 height: 5px;
 border-radius: 100%;
-background: #673C63;
+background: darkolivegreen;
 transform: translate(-70%, 0%);
 animation: blink-eyes 3s infinite linear;
 }
@@ -539,7 +575,7 @@ top: 20%;
 width: 5px;
 height: 5px;
 border-radius: 100%;
-background: #673C63;
+background: darkolivegreen;
 transform: translate(-70%, 0%);
 animation: blink-eyes 3s infinite linear;
 }
@@ -551,7 +587,7 @@ top: 20%;
 width: 0px;
 height: 0px;
 border-radius: 20px;
-background: #673C63;
+background: darkolivegreen;
 transform: translate(-50%, -50%);
 animation: uff 3s infinite linear;
 }
@@ -586,7 +622,7 @@ top: 65%;
 width: 42px;
 height: 60px;
 background: #fff;
-border: 3px solid #dbb8d8;
+border: 3px solid darkolivegreen;
 border-bottom: 0px;
 border-radius: 3px;
 transform: translate(60%, -15%);
@@ -602,10 +638,10 @@ top: 50%;
 width: 5px;
 height: 5px;
 display: inline-block;
-border: 0px solid #673C63;
+border: 0px solid darkolivegreen;
 border-radius: 100%;
 float: left;
-background: #673C63;
+background: darkolivegreen;
 transform: translate(-80%, 0%);
 animation: changeto-lower 3s infinite linear;
 }
@@ -617,10 +653,10 @@ top: 50%;
 width: 5px;
 height: 5px;
 display: inline-block;
-border: 0px solid #673C63;
+border: 0px solid darkolivegreen;
 border-radius: 100%;
 float: left;
-background: #673C63;
+background: darkolivegreen;
 transform: translate(-80%, 0%);
 animation: changeto-greater 3s infinite linear;
 }
@@ -635,7 +671,7 @@ border-radius: 100%;
 z-index: 0;
 transform: translate(-25%, -50%) scale(2.5, 2.5);
 border: 2px solid rgba(255, 255, 255, 0.2);
-animation: expand-light 3s infinite linear;
+animation: expand-light 9s infinite linear;
 }
 
 .candle2__fire {
@@ -787,7 +823,7 @@ animation: dance-fire 3s infinite linear;
       left: 20%;
       transform: scale(1.15, 0.85) translate(60%, -15%);
       background: #fff;
-      border-color: #673C63;
+      border-color: darkolivegreen;
     }
     91% {
       left: 20%;
@@ -900,14 +936,14 @@ animation: dance-fire 3s infinite linear;
       padding: 0px;
       display: inline-block;
       border-radius: 100%;
-      background: #673C63;
+      background: darkolivegreen;
       border-width: 0 0 0 0;
-      border: 0px solid #673C63;
+      border: 0px solid darkolivegreen;
       transform: translate(-90%, 0%);
     }
     71%,89% {
       background: none;
-      border: solid #673C63;
+      border: solid darkolivegreen;
       border-radius: 0px;
       border-width: 0 2px 2px 0;
       display: inline-block;
@@ -924,15 +960,15 @@ animation: dance-fire 3s infinite linear;
       padding: 0px;
       display: inline-block;
       border-radius: 100%;
-      background: #673C63;
+      background: darkolivegreen;
       border-width: 0 0 0 0;
-      border: 0px solid #673C63;
+      border: 0px solid darkolivegreen;
       transform: translate(-80%, 0%);
     }
     71%,89% {
       top: 30%;
       background: none;
-      border: solid #673C63;
+      border: solid darkolivegreen;
       border-radius: 0px;
       border-width: 0 2px 2px 0;
       display: inline-block;

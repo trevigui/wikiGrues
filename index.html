@@ -29,7 +29,7 @@
                 <ul class="desktopList">
                     <!-- L'unité "em" est adaptatiave sur toutes les plateformes (mobile, desktop) comparée à la valeur "px"-->
                     <!-- On ne met pas de style="width:20em" à notre image, on le fera sur du CSS, pas sur du HTML-->
-                    <li><a href="#" target="_blank"><img class="logo" src="monimage.png" alt="Logo du site"></a></li>
+                    <li><a href="#" target="_blank"><img class="logo" src="/resources/monimage.png" alt="Logo du site"></a></li>
                     <!-- href="#" tout seul signifie que l'on est redirigé vers la même page-->
                     <li><button type="button" class="topButton"><a href="index.html" target="_blank">Accueil</a></button></li>
                     <li><button type="button" class="topButton"><a href="navigation/service.html" target="_blank">Service</a></button></li>
@@ -41,7 +41,7 @@
                 <!-- Utilisation d'une checkbox -->
                 <input type="checkbox" id="hamburger">
                 <!-- Label de la checkbox -->
-                <label id="hamburger-logo" for="hamburger"><img class="mobileLogo" src="/menu.png"></label>
+                <label id="hamburger-logo" for="hamburger"><img class="mobileLogo" src="/resources/menu.png"></label>
                 <!-- Le reste du menu -->
                 <nav class="mobileList">
                     <a href="#">Page d'accueil</a>
@@ -63,8 +63,8 @@
             On peut influencer les éléments de la section entre eux mais pas individuellement.
             Je crée donc une classe pour l'agencement des images dans la section, et une classe pour la taille des deux img-->
             <figure class="section1">
-                <a href="#species"><img class="images" src="content1.jpg" alt="un oiseau"></a>
-                <a href="#species"><img class="images" src="content2.jpg" alt="un oiseau"></a>
+                <a href="#species"><img class="images" src="/resources/content1.jpg" alt="un oiseau"></a>
+                <a href="#species"><img class="images" src="/resources/content2.jpg" alt="un oiseau"></a>
             </figure>
             <div class="section2">
                 <!-- On peut choisir des boîtes <section> ou <div> sans distinction à part une meilleure SEO pour les sections dans le main.-->
@@ -78,7 +78,7 @@
                 </p>
             </div>
             <h2 class="corpus"> Flux migratoires </h2>
-            <div class="flashcard">
+            <div class="parallaxFlashcard">
                 <h3> En France... </h3>
                     <h4>La grue cendrée</h4>
                     <p>La grue cendrée (Grus grus) est une espèce de grands oiseaux de la famille des gruidés. La population mondiale de grues cendrées adultes est estimée en 2021 à 482 000 individus et en augmentation, ce qui fait classer l'espèce en « préoccupation mineure »1. </p>
@@ -87,7 +87,7 @@
                     <p>Les grues arrivent en masse en France, en fin de journée et durant la nuit sur un très large front. La Moselle, le Bas-Rhin sont très survolés (dans ce dernier département, un observateur en totalise plus de 12 000 avant la nuit !) mais aussi la Haute-Marne, la Meuse... Certaines poursuivent leur route sans s'arrêter dans le Grand Est.</p>
                  
                 </div>
-            <div class="flashcard">
+            <div class="parallaxFlashcard2">
                 <h3 id="species"> Espèces </h3>
                     <h4>La venue du froid</h4>
                     <p>Au lac du Der, les effectifs augmentent avec 36 250 grues. En raison de la température basse, certaines grues avaient les pattes rentrées dans les plumes en volant. Bien que la diagonale de migration apparaisse bien sur la carte, le nombre de grues concernées par des mouvements aujourd'hui n'est pas très important. </p>
@@ -177,7 +177,7 @@
     <footer>
         <div class="pageBottom">
             <figure>
-                <img class="logo" src="monimage.png" alt="Logo du site">
+                <img class="logo" src="/resources/monimage.png" alt="Logo du site">
             </figure>
             <div class="navBottom">
                 <ul>
