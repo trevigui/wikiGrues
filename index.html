@@ -1,7 +1,9 @@
-<!-- test  -->
-
-<!-- Au début, on tape point d'exclamation + entrée -->
-<!-- on peut générer plusieurs balises en écrivant <nomdebalise> * 3 et en supprimant les espaces-->
+<!-- Au début, on tape point d'exclamation + entrée. -->
+<!-- on peut générer plusieurs balises en écrivant <nomdebalise> * 3 et en supprimant les espaces. -->
+<!-- Clic du milieu + drag selection = sélection en carré comme ALT+drag sur Word. -->
+<!-- ctrl + : pour mettre en commentaire. -->
+<!-- alt + clic pour sélectionner à multiples endroits. -->
+<!-- ALT + M ruins TAB, enables Caret Tab browsing. -->
 <!DOCTYPE html>
 <!-- Langue fr-->
 <html lang="fr">
@@ -27,29 +29,39 @@
         <!-- J'indique dans le tag div la classe nommée hautDePage" que j'ai créé
         dans mon css-->
         <div>
-            <nav class="desktopMenu">
-                <ul class="desktopList">
+            <div class="desktopMenu">
+                <div>
                     <!-- L'unité "em" est adaptatiave sur toutes les plateformes (mobile, desktop) comparée à la valeur "px"-->
                     <!-- On ne met pas de style="width:20em" à notre image, on le fera sur du CSS, pas sur du HTML-->
-                    <li><a href="#" target="_blank"><img class="logo" src="/resources/monimage.png" alt="Logo du site"></a></li>
-                    <!-- href="#" tout seul signifie que l'on est redirigé vers la même page-->
-                    <li><button type="button" class="topButton"><a href="index.html" target="_blank">Accueil</a></button></li>
-                    <li><button type="button" class="topButton"><a href="navigation/service.html" target="_blank">Service</a></button></li>
-                    <li><button type="button" class="topButton"><a href="navigation/produit.html" target="_blank">Produit</a></button></li>
-                    <li><button type="button" class="topButton"><a href="navigation/contact.html" target="_blank">Contact</a></button></li>
-                </ul>
-            </nav>
+                    <a href="#" target="_blank"><img class="logo" src="resources/monimage.png" alt="Logo du site"></a>
+                </div>
+                <nav>
+                    <ul class="desktopList">
+                        <!-- href="#" tout seul signifie que l'on est redirigé vers la même page-->
+                        <li><button type="button" class="topButton"><a href="index.html" target="_blank">Accueil</a></button></li>
+                        <li><button type="button" class="topButton"><a href="navigation/service.html" target="_blank">Service</a></button></li>
+                        <li><button type="button" class="topButton"><a href="navigation/produit.html" target="_blank">Produit</a></button></li>
+                        <li><button type="button" class="topButton"><a href="navigation/contact.html" target="_blank">Contact</a></button></li>
+                    </ul>
+                </nav>
+                <div class="searchBar">
+                    <form action="placeholderPage.php">
+                        <input class="topButton" type="text" placeholder="Rechercher" name="search">
+                        <button class="topButton" type="submit">🔎</button>
+                    </form>
+                </div>
+            </div>
             <div class="mobileMenu">
                 <!-- Utilisation d'une checkbox -->
                 <input type="checkbox" id="hamburger">
                 <!-- Label de la checkbox -->
-                <label id="hamburger-logo" for="hamburger"><img class="mobileLogo" src="/resources/menu.png"></label>
+                <label id="hamburger-logo" for="hamburger"><img class="mobileLogo" src="resources/menu.png"></label>
                 <!-- Le reste du menu -->
                 <nav class="mobileList">
                     <a href="#">Page d'accueil</a>
-                    <a href="/navigation/produit.html">Produit</a>
-                    <a href="/navigation/service.html">Service</a>
-                    <a href="/navigation/contact.html">Contact</a>
+                    <a href="navigation/produit.html">Produit</a>
+                    <a href="navigation/service.html">Service</a>
+                    <a href="navigation/contact.html">Contact</a>
                 </nav>
             </div>
         </div>
@@ -65,8 +77,8 @@
             On peut influencer les éléments de la section entre eux mais pas individuellement.
             Je crée donc une classe pour l'agencement des images dans la section, et une classe pour la taille des deux img-->
             <figure class="section1">
-                <a href="#species"><img class="images" src="/resources/content1.jpg" alt="un oiseau"></a>
-                <a href="#species"><img class="images" src="/resources/content2.jpg" alt="un oiseau"></a>
+                <a href="#species"><img class="images" src="resources/content1.jpg" alt="un oiseau"></a>
+                <a href="#species"><img class="images" src="resources/content2.jpg" alt="un oiseau"></a>
             </figure>
             <div class="section2">
                 <!-- On peut choisir des boîtes <section> ou <div> sans distinction à part une meilleure SEO pour les sections dans le main.-->
@@ -179,7 +191,7 @@
     <footer>
         <div class="pageBottom">
             <figure>
-                <img class="logo" src="/resources/monimage.png" alt="Logo du site">
+                <img class="logo" src="resources/monimage.png" alt="Logo du site">
             </figure>
             <div class="navBottom">
                 <ul>
